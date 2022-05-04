@@ -20,7 +20,7 @@ pipeline {
                 unstash 'petclinicjar'
                 sh 'mv spring-petclinic-*.jar petclinic.jar'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'ls -al ./target/ && docker build -t muldos/petclinic:latest .'
+                sh 'docker build -t muldos/petclinic:latest .'
 		        sh 'docker push muldos:latest'
             }
         }
