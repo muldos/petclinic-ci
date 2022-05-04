@@ -8,7 +8,7 @@ pipeline {
             }
             steps {
                 git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
-                sh './mvnw -B -Dcheckstyle.skip package'
+                sh './mvnw -B -Dcheckstyle.skip clean package -U'
                 stash includes: 'target/spring-petclinic-*.jar', name: 'petclinicjar'
             }
         }
