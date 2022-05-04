@@ -18,7 +18,7 @@ pipeline {
             }
             steps {
                 unstash 'petclinicjar'
-                sh 'mv spring-petclinic-*.jar petclinic.jar'
+                sh 'mv target/spring-petclinic-*.jar petclinic.jar'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker build -t muldos/petclinic:latest .'
 		        sh 'docker push muldos:latest'
